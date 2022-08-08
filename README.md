@@ -8,9 +8,9 @@
 | email              | string | null: false, uni: false |
 | encrypted_password | string | null: false             |
 | first_name         | string | null: false             |
-| last_name          | string | null: false             |
+| family_name        | string | null: false             |
 | read_first         | string | null: false             |
-| read_last          | string | null: false             |
+| read_family        | string | null: false             |
 | birth              | string | null: false             |
 
 ### Association
@@ -57,12 +57,12 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| post_code      | integer    | null: false                    |
-| prefecture_id  | integer    | null: false                    |
-| municipality   | text       | null: false                    |
-| house_num      | text       | null: false                    |
-| building_name  | text       | null: false                    |
-| phone_number   | integer    | null: false                    |
+| post_code      | string     | null: false                    |
+| category_id    | integer    | null: false                    |
+| municipality   | string     | null: false                    |
+| house_num      | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_num      | string     | null: false                    |
 | order          | references | null: false, foreign_key: true |
 
 ### Association
