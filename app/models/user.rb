@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,    presence: true
-  with_options presence: true, format: { with: /\A[a-z\d]{6,}\z/, message: '半角英数字を使用してください' } do
+  with_options presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/, message: '半角英数字を使用してください' } do
     validates :password
   end
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
