@@ -100,15 +100,25 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password 半角英数字を使用してください")
       end
-      it '名字は全角（漢字・ひらがな・カタカナ）でないと登録できない' do
+      it '性は全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.family_name = 'a'
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
       end
-      it '名前は全角（漢字・ひらがな・カタカナ）でないと登録できない' do
+      it '名は全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.first_name = 'a'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
+      it '性(カナ)はカタカナでないと登録できない' do
+        @user.read_family = 'あああ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Read family カタカナを使用してください")
+      end
+      it '名(カナ)はカタカナでないと登録できない' do
+        @user.read_first = 'あああ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Read first カタカナを使用してください")
       end
     end
   end
