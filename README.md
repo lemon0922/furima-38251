@@ -67,4 +67,4 @@
 
 ### Association
 
-- belongs_to :address
+- belongs_to :order
