@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options                 |
-| ------------------ | ------ | ------------------------|
-| nickname           | string | null: false             |
-| email              | string | null: false, uni: false |
-| encrypted_password | string | null: false             |
-| first_name         | string | null: false             |
-| family_name        | string | null: false             |
-| read_first         | string | null: false             |
-| read_family        | string | null: false             |
-| birth              | string | null: false             |
+| Column             | Type   | Options                |
+| ------------------ | ------ | -----------------------|
+| nickname           | string | null: false            |
+| email              | string | null: false, uni: true |
+| encrypted_password | string | null: false            |
+| first_name         | string | null: false            |
+| family_name        | string | null: false            |
+| read_first         | string | null: false            |
+| read_family        | string | null: false            |
+| birth              | date   | null: false            |
 
 ### Association
 
@@ -29,7 +29,7 @@
 | condition_id | integer    | null: false                    |
 | burden_id    | integer    | null: false                    |
 | area_id      | integer    | null: false                    |
-| day_id       | integer    | null: false                    |
+| date_id      | integer    | null: false                    |
 | price        | integer    | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
@@ -49,7 +49,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 - has_one    :address
 
 
@@ -58,7 +58,7 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_code      | string     | null: false                    |
-| category_id    | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipality   | string     | null: false                    |
 | house_num      | string     | null: false                    |
 | building_name  | string     |                                |
@@ -67,4 +67,4 @@
 
 ### Association
 
-- has_one    :address
+- belongs_to :address
