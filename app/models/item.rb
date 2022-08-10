@@ -6,7 +6,10 @@ class Item < ApplicationRecord
   validates :burden_id,        numericality: { other_than: 1, message: "can't be blank" }
   validates :area_id,          numericality: { other_than: 1, message: "can't be blank" }
   validates :scheduled_date_id,numericality: { other_than: 1, message: "can't be blank" }
-  validates :price,            presence: true, format: { with: /\A[300-9999999]\z/, message: 'is out of setting range' }, { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters'}
+  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
+    validates :price, numericality: { only_integer: true, greater_than_or_equel_to: 300, less_than_or_equel_to: 9_999_999 },
+                      presence: { message: "can't be blank" }
+  end
   validates :image,            presence: true
 
   belongs_to       :user
