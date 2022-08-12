@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品出品できる場合' do
-      it "titleとcontentが存在、category_idとcondition_id、burden_id、area_id、scheduled_date_idが1以外、priceが300円〜9,999,999円で登録できる" do
+      it 'titleとcontentが存在、category_idとcondition_id、burden_id、area_id、scheduled_date_idが1以外、priceが300円〜9,999,999円で登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -54,25 +54,25 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Scheduled date can't be blank")
       end
       it 'priceが半角数字以外では登録できない' do
-        @item.price = "aaa"
+        @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceが300円以下では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが9,999,999円以上では登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'userが紐付いていない場合は登録できない' do
         @item.user = nil
         @item.valid?
         binding.pry
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
