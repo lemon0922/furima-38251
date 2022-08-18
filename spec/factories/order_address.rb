@@ -6,7 +6,5 @@ FactoryBot.define do
     municipality { Faker::Address.city }
     house_num { Faker::Address.street_address }
     phone_num { Faker::Number.decimal_part(digits: 11) }
-    user_id { Faker::Number.non_zero_digit }
-    item_id { Faker::Number.non_zero_digit }
   end
 end

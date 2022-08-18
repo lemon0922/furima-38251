@@ -2,15 +2,18 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = FactoryBot.build(:order_address)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @order_address = FactoryBot.build(:order_address, user_id: @user, item_id: @item)
+    sleep 0.1
   end
 
   describe '商品の購入' do
     context '商品が購入できるとき' do
-      it 'すべての値が正しく入力されていれば保存できる' do
+      it 'すべての値が正しく入力されていれば購入できる' do
         expect(@order_address).to be_valid
       end
-      it '建物名が空でも保存できる' do
+      it '建物名が空でも購入できる' do
         @order_address.building_name = nil
         expect(@order_address).to be_valid
       end
